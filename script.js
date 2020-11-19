@@ -1,3 +1,5 @@
+
+
 const currencies = [
   'EUR',
   'CAD',
@@ -34,3 +36,23 @@ const currencies = [
   'MYR'
 ]
 
+const Submit1 = document.querySelector('#submit')
+
+  Submit1.addEventListener('click', () => {
+    const selector1 = document.querySelector('#fromcurrency').value
+    const selector2= document.querySelector('#tocurrency').value 
+    const input1 = parseInt(document.querySelector('#number').value)
+    fetch (`https://api.exchangeratesapi.io/latest?base=${selector1}`
+    )
+    .then (Response => Response.json()) 
+    .then ( data => {
+      const rate = input1 * data.rates[selector2]
+      const output1 = document.querySelector('.output')
+      output1.textContent = rate
+    })
+  })
+
+  
+  
+  
+  
